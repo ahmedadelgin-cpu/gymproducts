@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA FIT 2026 | متجر الجيم والمكملات والمعدات الرياضية الأول في مصر</title>
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-light: #10b981;
+      --primary-bg: #ecfdf5;
+      --accent: #0284c7;
+      --dark: #0f172a;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --radius: 16px;
+      --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Cairo', 'Segoe UI', Roboto, sans-serif; }
+    body { background-color: #fbfcfd; color: var(--dark); line-height: 1.6; padding-bottom: 75px; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 18px; }
+
+    /* Announcement Bar */
+    .top-bar { background: linear-gradient(90deg, #0f172a, #1e293b); color: #fff; font-size: 0.82rem; padding: 9px 0; }
+    .top-bar-inner { display: flex; justify-content: space-between; align-items: center; }
+    .top-pill { background: var(--primary-light); color: #0f172a; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
+
+    /* Header */
+    header { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--slate-200); }
+    .header-content { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 1.45rem; font-weight: 900; letter-spacing: -0.5px; }
+    .brand-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .brand span { color: var(--primary); }
+
+    .search-wrap { flex: 1; max-width: 460px; position: relative; }
+    .search-wrap input { width: 100%; padding: 11px 44px 11px 16px; border-radius: 99px; border: 1px solid var(--slate-200); background: var(--slate-50); font-size: 0.88rem; outline: none; transition: 0.2s; }
+    .search-wrap input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(5,150,105,0.12); }
+    .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--slate-500); }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .action-icon-btn { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--slate-200); display: flex; align-items: center; justify-content: center; background: var(--slate-50); position: relative; color: var(--dark); transition: 0.2s; }
+    .action-icon-btn:hover { border-color: var(--primary); color: var(--primary); background: #fff; }
+    .badge-count { position: absolute; top: -3px; left: -3px; background: var(--primary); color: #fff; font-size: 0.7rem; font-weight: 800; width: 19px; height: 19px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+    .cart-summary { background: var(--dark); color: #fff; padding: 9px 18px; border-radius: 99px; font-weight: 700; font-size: 0.88rem; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .cart-summary:hover { background: #1e293b; transform: translateY(-1px); }
+
+    /* Marketing Mega Menu */
+    .mega-nav { border-top: 1px solid var(--slate-100); background: #ffffff; }
+    .nav-list { display: flex; list-style: none; gap: 4px; overflow-x: auto; padding: 6px 0; scrollbar-width: none; }
+    .nav-list::-webkit-scrollbar { display: none; }
+    .nav-item { position: relative; }
+    .nav-btn { display: flex; align-items: center; gap: 6px; padding: 9px 14px; font-size: 0.88rem; font-weight: 700; color: #334155; border-radius: 8px; white-space: nowrap; transition: 0.2s; }
+    .nav-btn:hover, .nav-btn.active { color: var(--primary); background: var(--primary-bg); }
+    .tag-sm { font-size: 0.65rem; font-weight: 800; padding: 1px 6px; border-radius: 4px; }
+    .tag-hot { background: #fee2e2; color: #dc2626; }
+    .tag-new { background: #dbeafe; color: #1d4ed8; }
+
+    /* Mega Dropdown */
+    .mega-dropdown { position: absolute; top: 100%; right: 0; width: 720px; background: #fff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 22px; box-shadow: var(--shadow-lg); display: grid; grid-template-columns: repeat(3, 1fr) 200px; gap: 16px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: 0.2s; z-index: 999; }
+    .nav-item:hover .mega-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .drop-col h5 { font-size: 0.88rem; font-weight: 800; color: var(--dark); padding-bottom: 6px; border-bottom: 2px solid var(--primary-bg); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .drop-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .drop-col a { font-size: 0.82rem; color: var(--slate-500); display: block; padding: 3px 6px; border-radius: 6px; transition: 0.15s; }
+    .drop-col a:hover { color: var(--primary); background: var(--slate-50); padding-right: 8px; }
+    .promo-card { background: linear-gradient(145deg, var(--slate-50), #fff); border: 1px dashed var(--primary); border-radius: 12px; padding: 14px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+
+    /* Hero Section */
+    .hero { background: radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.06) 0%, transparent 40%), #fff; border-bottom: 1px solid var(--slate-200); padding: 48px 0 54px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+    .hero-badge { background: var(--primary-bg); color: var(--primary); font-size: 0.82rem; font-weight: 800; padding: 6px 14px; border-radius: 99px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; border: 1px solid rgba(5,150,105,0.2); }
+    .hero h1 { font-size: 3rem; line-height: 1.18; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero h1 span { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--slate-500); font-size: 1.08rem; max-width: 520px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+    .btn-primary { background: var(--primary); color: #fff; padding: 13px 28px; border-radius: 99px; font-weight: 800; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 18px rgba(5, 150, 105, 0.25); transition: 0.2s; }
+    .btn-primary:hover { background: #047857; transform: translateY(-2px); }
+    .btn-outline { background: #fff; color: var(--dark); border: 1px solid var(--slate-200); padding: 13px 26px; border-radius: 99px; font-weight: 800; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .btn-outline:hover { background: var(--slate-50); border-color: var(--slate-400); }
+
+    .hero-metrics { display: flex; gap: 28px; border-top: 1px solid var(--slate-200); padding-top: 22px; }
+    .metric b { font-size: 1.35rem; font-weight: 900; display: block; color: var(--dark); }
+    .metric span { font-size: 0.78rem; color: var(--slate-500); }
+
+    .hero-showcase { background: #fff; border: 1px solid var(--slate-200); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-lg); text-align: center; position: relative; }
+    .floating-chip { position: absolute; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border: 1px solid var(--slate-200); box-shadow: var(--shadow-md); padding: 8px 14px; border-radius: 99px; font-size: 0.8rem; font-weight: 800; }
+    .chip-left { top: 20px; left: -10px; }
+    .chip-right { bottom: 20px; right: -10px; }
+
+    /* Flash Sale Banner */
+    .flash-box { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 18px; padding: 20px 28px; margin: 30px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; box-shadow: var(--shadow-md); }
+    .flash-info { display: flex; align-items: center; gap: 14px; }
+    .flash-badge-icon { width: 44px; height: 44px; background: #ef4444; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .timer-group { display: flex; align-items: center; gap: 8px; }
+    .time-slot { background: rgba(255,255,255,0.12); padding: 6px 12px; border-radius: 8px; text-align: center; min-width: 50px; }
+    .time-slot b { font-size: 1.25rem; font-weight: 900; color: #38bdf8; display: block; }
+    .time-slot span { font-size: 0.65rem; color: #94a3b8; }
+
+    /* Category Showcase */
+    .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+    .section-header h2 { font-size: 1.75rem; font-weight: 900; letter-spacing: -0.5px; }
+    .section-header p { font-size: 0.92rem; color: var(--slate-500); }
+    .cat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 34px; }
+    .cat-card { background: #fff; border: 1px solid var(--slate-200); border-radius: 18px; padding: 20px 14px; text-align: center; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .cat-card:hover, .cat-card.active { border-color: var(--primary); background: var(--primary-bg); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .cat-card-icon { width: 54px; height: 54px; border-radius: 14px; background: var(--slate-100); display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+    .cat-card:hover .cat-card-icon, .cat-card.active .cat-card-icon { background: var(--primary); color: #fff; }
+    .cat-card h4 { font-size: 0.95rem; font-weight: 800; }
+    .cat-card span { font-size: 0.75rem; color: var(--slate-500); }
+
+    /* Filters Bar */
+    .filter-bar { background: #fff; border: 1px solid var(--slate-200); border-radius: 14px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .pill-group { display: flex; gap: 8px; overflow-x: auto; }
+    .filter-pill { padding: 8px 16px; border-radius: 99px; background: var(--slate-100); font-size: 0.85rem; font-weight: 700; color: var(--slate-500); white-space: nowrap; transition: 0.15s; }
+    .filter-pill.active, .filter-pill:hover { background: var(--dark); color: #fff; }
+    .sort-control { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--slate-200); font-size: 0.85rem; font-weight: 700; outline: none; background: var(--slate-50); }
+
+    /* Products Grid */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 22px; margin-bottom: 50px; }
+    .prod-card { background: #fff; border: 1px solid var(--slate-200); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; transition: 0.25s; position: relative; box-shadow: var(--shadow-sm); }
+    .prod-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(5,150,105,0.3); }
+    .prod-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .prod-badge { font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 99px; }
+    .badge-red { background: #fee2e2; color: #dc2626; }
+    .badge-green { background: var(--primary-bg); color: var(--primary); }
+    .badge-amber { background: #fef3c7; color: #d97706; }
+    .wish-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--slate-50); border: 1px solid var(--slate-200); display: flex; align-items: center; justify-content: center; color: var(--slate-500); transition: 0.2s; }
+    .wish-btn.active { color: #ef4444; background: #fee2e2; border-color: #fee2e2; }
+
+    .prod-thumb { height: 190px; background: linear-gradient(180deg, var(--slate-50), #fff); border-radius: 14px; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+    .quick-hover { position: absolute; bottom: 10px; background: rgba(15,23,42,0.85); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 99px; opacity: 0; transition: 0.2s; }
+    .prod-card:hover .quick-hover { opacity: 1; }
+
+    .prod-cat-label { font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-top: 14px; }
+    .prod-title { font-size: 1.02rem; font-weight: 800; margin: 4px 0 8px; cursor: pointer; min-height: 44px; line-height: 1.35; }
+    .prod-stars { font-size: 0.8rem; color: #f59e0b; display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+    .prod-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+    .chip { background: var(--slate-100); color: var(--slate-500); font-size: 0.72rem; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+
+    .prod-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--slate-100); padding-top: 14px; }
+    .prod-price { font-size: 1.3rem; font-weight: 900; }
+    .prod-price small { font-size: 0.85rem; font-weight: 600; color: var(--slate-500); }
+    .prod-old-price { font-size: 0.8rem; color: var(--slate-500); text-decoration: line-through; margin-right: 4px; }
+    .add-cart-btn { background: var(--primary); color: #fff; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; transition: 0.2s; box-shadow: 0 4px 10px rgba(5,150,105,0.2); }
+    .add-cart-btn:hover { background: #047857; transform: scale(1.05); }
+
+    /* Interactive Protein Calculator */
+    .calc-container { background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%); border: 1px solid var(--slate-200); border-radius: 24px; padding: 36px; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+    .calc-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    .input-group { display: flex; flex-direction: column; gap: 6px; }
+    .input-group label { font-size: 0.84rem; font-weight: 700; }
+    .input-group input, .input-group select { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--slate-200); background: #fff; font-size: 0.9rem; outline: none; }
+    .calc-result-box { background: #fff; border: 1px solid var(--slate-200); border-radius: 20px; padding: 26px; text-align: center; box-shadow: var(--shadow-md); }
+    .calc-result-box .num { font-size: 2.8rem; font-weight: 900; color: var(--primary); margin: 6px 0; }
+
+    /* Bundles */
+    .bundles-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-bottom: 60px; }
+    .bundle { background: #fff; border: 2px solid var(--slate-200); border-radius: 22px; padding: 26px; position: relative; }
+    .bundle.featured { border-color: var(--primary); box-shadow: var(--shadow-md); }
+    .bundle-badge { position: absolute; top: -13px; right: 20px; background: var(--primary); color: #fff; font-size: 0.76rem; font-weight: 800; padding: 4px 14px; border-radius: 99px; }
+    .bundle ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 16px 0 20px; border-top: 1px dashed var(--slate-200); border-bottom: 1px dashed var(--slate-200); padding: 14px 0; font-size: 0.88rem; }
+    .bundle ul li { display: flex; align-items: center; gap: 8px; }
+
+    /* Testimonials */
+    .reviews-box { background: #fff; border: 1px solid var(--slate-200); border-radius: 24px; padding: 40px; margin-bottom: 60px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+    .review-item { background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 16px; padding: 20px; }
+
+    /* Footer */
+    footer { background: #fff; border-top: 1px solid var(--slate-200); padding: 50px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 36px; margin-bottom: 34px; }
+    .footer-col h4 { font-size: 0.98rem; font-weight: 800; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.85rem; color: var(--slate-500); transition: 0.15s; }
+    .footer-col a:hover { color: var(--primary); }
+
+    /* Cart Drawer */
+    .cart-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.55); backdrop-filter: blur(4px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.25s; }
+    .cart-backdrop.active { opacity: 1; visibility: visible; }
+    .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: 100%; max-width: 420px; background: #fff; z-index: 2050; transform: translateX(-100%); transition: 0.32s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+    .cart-backdrop.active .drawer { transform: translateX(0); }
+    .drawer-header { padding: 18px 20px; border-bottom: 1px solid var(--slate-200); display: flex; justify-content: space-between; align-items: center; }
+    .shipping-meter { background: var(--primary-bg); padding: 12px 20px; font-size: 0.82rem; font-weight: 700; color: var(--primary); }
+    .meter-bar { height: 6px; background: rgba(5,150,105,0.2); border-radius: 99px; overflow: hidden; margin-top: 6px; }
+    .meter-fill { height: 100%; background: var(--primary); width: 0%; transition: 0.3s; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+    .cart-card { display: flex; gap: 12px; border-bottom: 1px solid var(--slate-100); padding-bottom: 12px; align-items: center; }
+    .cart-thumb { width: 60px; height: 60px; background: var(--slate-100); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .drawer-footer { padding: 18px 20px; border-top: 1px solid var(--slate-200); background: var(--slate-50); }
+    .calc-row { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; }
+    .calc-row.final { font-size: 1.18rem; font-weight: 900; border-top: 1px solid var(--slate-200); padding-top: 10px; margin-top: 10px; color: var(--dark); }
+
+    /* Modals */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.65); backdrop-filter: blur(5px); z-index: 2200; display: flex; align-items: center; justify-content: center; padding: 18px; opacity: 0; visibility: hidden; transition: 0.2s; }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-window { background: #fff; border-radius: 22px; width: 100%; max-width: 540px; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto; }
+    .close-modal { position: absolute; top: 16px; left: 16px; width: 34px; height: 34px; border-radius: 50%; background: var(--slate-100); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+
+    /* Mobile Bottom Navigation */
+    .mobile-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--slate-200); z-index: 990; padding: 8px 14px; justify-content: space-around; align-items: center; }
+    .mobile-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 0.72rem; font-weight: 700; color: var(--slate-500); }
+    .mobile-tab.active { color: var(--primary); }
+
+    /* Toast */
+    .toast-tray { position: fixed; bottom: 22px; left: 22px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+    .toast-pill { background: #fff; border: 1px solid var(--slate-200); border-right: 4px solid var(--primary); padding: 10px 18px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; box-shadow: var(--shadow-lg); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .calc-container { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .mega-dropdown { width: 95vw; left: -10px; right: -10px; grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .mobile-bar { display: flex; }
+      .search-wrap { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <span class="top-pill">كود الخصم FIT2026</span>
+        <span>شحن مجاني لكافة محافظات مصر للطلبات فوق 1,500 ج.م | منتجات أصلية 100% 🇪🇬</span>
+      </div>
+      <div style="font-size: 0.78rem; color: #94a3b8;">ضمان استرجاع 14 يوم • دفع عند الاستلام أو إنستاباي InstaPay</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="brand">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 5v14M18 5v14M2 9h4M18 9h4M2 15h4M18 15h4M6 12h12"/></svg>
+          </div>
+          <div>AURA <span>FIT 2026</span></div>
+        </a>
+
+        <!-- Search -->
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="liveSearch" placeholder="ابحث عن واي بروتين، كرياتين، دمبلز، أحزمة، ملابس..." oninput="handleSearch(this.value)">
+        </div>
+
+        <!-- Actions -->
+        <div class="header-actions">
+          <button class="action-icon-btn" onclick="toast('قائمة المفضلة فارغة حالياً')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span class="badge-count" id="wishCount">0</span>
+          </button>
+
+          <button class="cart-summary" onclick="toggleCart(true)">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span>السلة</span>
+            <span class="badge-count" style="position:static; margin-right:4px;" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing Mega-Menu Navigation Bar -->
+    <nav class="mega-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#store" class="nav-btn active" onclick="setCategory('all', this)">⚡ جميع المنتجات</a>
+          </li>
+
+          <!-- Supplements Dropdown -->
+          <li class="nav-item">
+            <a href="#store" class="nav-btn" onclick="setCategory('supplements', this)">
+              🥤 مكملات وبروتينات
+              <span class="tag-sm tag-hot">الأعلى طلباً</span>
+            </a>
+            <div class="mega-dropdown">
+              <div class="drop-col">
+                <h5>🥛 البروتينات النقية</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('supplements')">واي بروتين هايدرو أيزوليت</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">كازين بروتين بطيء الامتصاص</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">أحماض أمينية BCAA/EAA</a></li>
+                </ul>
+              </div>
+              <div class="drop-col">
+                <h5>⚡ القوة والضخامة</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('supplements')">بري وورك أوت Nitro Pump</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">كرياتين مونوهايدريت 200 Mesh</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">حوارق دهون ثيرموجينك</a></li>
+                </ul>
+              </div>
+              <div class="drop-col">
+                <h5>🌿 فيتامينات وصحة</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('supplements')">ملتي فيتامين للرياضيين</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">أوميغا 3 عالي النقاء</a></li>
+                  <li><a href="#store" onclick="setCategory('supplements')">زنك ومغنيسيوم جلايسينات</a></li>
+                </ul>
+              </div>
+              <div class="promo-card">
+                <b style="font-size: 0.85rem; color: var(--primary);">باقة التضخيم 2026</b>
+                <p style="font-size: 0.74rem; color: var(--slate-500); margin: 6px 0;">وفر حتى 1,000 ج.م مع باقة البروتين والكرياتين والشيكر</p>
+                <a href="#bundles" class="btn-primary" style="padding: 6px 12px; font-size: 0.78rem; justify-content: center;">تصفح الباقات</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Equipment Dropdown -->
+          <li class="nav-item">
+            <a href="#store" class="nav-btn" onclick="setCategory('equipment', this)">
+              🏋️ معدات وأوزان الجيم
+            </a>
+            <div class="mega-dropdown">
+              <div class="drop-col">
+                <h5>🪨 الأوزان الحرة</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('equipment')">أطقم دمبلز ذكية سريعة التعديل</a></li>
+                  <li><a href="#store" onclick="setCategory('equipment')">بار أولمبي ستانلس ستيل</a></li>
+                  <li><a href="#store" onclick="setCategory('equipment')">كيتل بيل حديد صلب</a></li>
+                </ul>
+              </div>
+              <div class="drop-col">
+                <h5>🏃 أجهزة كارديو</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('equipment')">مشاية كهربائية ذكية قابلة للطي 2026</a></li>
+                  <li><a href="#store" onclick="setCategory('equipment')">عجلة رياضية ماجنتيك صامتة</a></li>
+                </ul>
+              </div>
+              <div class="drop-col">
+                <h5>🛡️ ملحقات وأمان</h5>
+                <ul>
+                  <li><a href="#store" onclick="setCategory('equipment')">دكة تمارين احترافية 7 زوايا</a></li>
+                  <li><a href="#store" onclick="setCategory('equipment')">أحزمة رفع أثقال جلد طبيعي 10 ملم</a></li>
+                </ul>
+              </div>
+              <div class="promo-card">
+                <b style="font-size: 0.85rem; color: var(--dark);">تجهيز هوم جيم متكامل</b>
+                <p style="font-size: 0.74rem; color: var(--slate-500); margin: 6px 0;">خدمة تصميم الجيم المنزلي مع ضمان شامل</p>
+                <a href="#bundles" class="btn-outline" style="padding: 6px 12px; font-size: 0.78rem; justify-content: center;">طلب عرض سعر</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a href="#store" class="nav-btn" onclick="setCategory('apparel', this)">
+              👟 ملابس وأزياء أداء
+              <span class="tag-sm tag-new">كولكشن 2026</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#store" class="nav-btn" onclick="setCategory('snacks', this)">🍫 سناك صحي وبروتين بار</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#calculator" class="nav-btn">🧮 حاسبة البروتين الذكية</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#bundles" class="nav-btn">🎁 باقات التوفير الكبرى</a>
+          </li>
+
+          <li class="nav-item" style="margin-right: auto;">
+            <a href="#flash" class="nav-btn" style="color: #dc2626; background: #fee2e2;">🔥 عروض الفلاش سيل</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span>✨ التشكيلة الرياضية المعتمدة لعام 2026 في مصر</span>
+        </div>
+        <h1>ابنِ نسختك الأقوى مع <span>أحدث ابتكارات اللياقة</span></h1>
+        <p>متجرك المتكامل لأرقى المكملات الغذائية المستوردة الأصلية 100%، معدات الجيم المنزلية المبتكرة، والملابس المصممة لقمة الأداء الرياضي والتحمل في مصر.</p>
+        
+        <div class="hero-actions">
+          <a href="#store" class="btn-primary">
+            <span>تسوق تشكيلة 2026 الآن</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </a>
+          <a href="#calculator" class="btn-outline">
+            <span>احسب احتياجك البروتيني</span>
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric"><b>+75,000</b><span>رياضي وبطل يثقون بنا</span></div>
+          <div class="metric"><b>100%</b><span>منتجات أصلية بباركود المصنع</span></div>
+          <div class="metric"><b>24-48 ساعة</b><span>شحن سريع لجميع المحافظات</span></div>
+        </div>
+      </div>
+
+      <!-- Hero Showcase -->
+      <div class="hero-showcase">
+        <div class="floating-chip chip-left">⚡ 28g بروتين هيدرولايزد</div>
+        <div class="floating-chip chip-right">★ 4.95 تقييم الكباتن</div>
+
+        <div style="height: 220px; display: flex; align-items: center; justify-content: center;">
+          <svg width="180" height="180" viewBox="0 0 100 100" fill="none">
+            <rect x="25" y="20" width="50" height="65" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="3"/>
+            <rect x="33" y="10" width="34" height="12" rx="3" fill="#0f172a"/>
+            <path d="M35 50h30" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="38" r="5" fill="#10b981"/>
+            <text x="50" y="68" font-size="7" font-weight="900" text-anchor="middle" fill="#0f172a">HYDRO 2026</text>
+          </svg>
+        </div>
+
+        <span style="background: var(--primary-bg); color: var(--primary); font-size: 0.78rem; font-weight: 800; padding: 3px 12px; border-radius: 99px;">المنتج الأفضل مبيعاً هذا الشهر</span>
+        <h3 style="font-size: 1.25rem; font-weight: 900; margin: 8px 0 4px;">واي بروتين هايدرو أيزوليت بلاتينيوم</h3>
+        <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 14px;">صفر سكر مضاف • صفر دهون • 6.5g BCAA</p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 14px;">
+          <b style="font-size: 1.45rem;">2,450 ج.م</b>
+          <button class="btn-primary" style="padding: 8px 22px; font-size: 0.88rem;" onclick="addToCart(1)">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flash Sale Section -->
+  <div class="container" id="flash">
+    <div class="flash-box">
+      <div class="flash-info">
+        <div class="flash-badge-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <div>
+          <h3 style="font-size: 1.15rem; font-weight: 800;">عروض الفلاش الأسبوعية | خصم حتى 40%</h3>
+          <p style="font-size: 0.8rem; color: #94a3b8;">ينتهي العرض قريباً على تشكيلة معدات وأغذية اللياقة</p>
+        </div>
+      </div>
+
+      <div class="timer-group">
+        <div class="time-slot"><b id="cdHrs">14</b><span>ساعة</span></div>
+        <div class="time-slot"><b id="cdMins">32</b><span>دقيقة</span></div>
+        <div class="time-slot"><b id="cdSecs">48</b><span>ثانية</span></div>
+      </div>
+
+      <button class="btn-primary" style="background: #fff; color: var(--dark); padding: 9px 20px;" onclick="filterDiscounted()">
+        تصفح عروض الفلاش 🔥
+      </button>
+    </div>
+  </div>
+
+  <!-- Store Section -->
+  <main class="container" id="store">
+    <!-- Visual Category Selector -->
+    <div class="section-header">
+      <div>
+        <h2>تسوق حسب الأقسام الرياضية</h2>
+        <p>تصفح تشكيلة عام 2026 المصممة وفق أدق معايير التغذية والأداء بالأسعار المصرية</p>
+      </div>
+    </div>
+
+    <div class="cat-cards">
+      <div class="cat-card active" onclick="setCategory('all', this)">
+        <div class="cat-card-icon">⚡</div>
+        <h4>جميع المنتجات</h4>
+        <span>10 أصناف متوفرة</span>
+      </div>
+      <div class="cat-card" onclick="setCategory('supplements', this)">
+        <div class="cat-card-icon">🥤</div>
+        <h4>المكملات والبروتين</h4>
+        <span>4 أصناف رئيسية</span>
+      </div>
+      <div class="cat-card" onclick="setCategory('equipment', this)">
+        <div class="cat-card-icon">🏋️</div>
+        <h4>أجهزة وأوزان الجيم</h4>
+        <span>3 أجهزة ومعدات</span>
+      </div>
+      <div class="cat-card" onclick="setCategory('apparel', this)">
+        <div class="cat-card-icon">👟</div>
+        <h4>الملابس والأحذية</h4>
+        <span>2 كولكشن</span>
+      </div>
+      <div class="cat-card" onclick="setCategory('snacks', this)">
+        <div class="cat-card-icon">🍫</div>
+        <h4>سناكس وأغذية صحية</h4>
+        <span>2 وجبات طاقة</span>
+      </div>
+    </div>
+
+    <!-- Filter & Sort Bar -->
+    <div class="filter-bar">
+      <div class="pill-group">
+        <button class="filter-pill active" onclick="setCategory('all', null, this)">الكل (10)</button>
+        <button class="filter-pill" onclick="setCategory('supplements', null, this)">المكملات الغذائية</button>
+        <button class="filter-pill" onclick="setCategory('equipment', null, this)">معدات وأوزان</button>
+        <button class="filter-pill" onclick="setCategory('apparel', null, this)">الملابس الرياضية</button>
+        <button class="filter-pill" onclick="setCategory('snacks', null, this)">سناكس وبروتين بار</button>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:0.84rem; color:var(--slate-500); font-weight:700;">ترتيب:</span>
+        <select class="sort-control" onchange="sortItems(this.value)">
+          <option value="featured">الأكثر تميزاً ورواجاً</option>
+          <option value="price-low">السعر: من الأقل للأعلى</option>
+          <option value="price-high">السعر: من الأعلى للأقل</option>
+          <option value="rating">الأعلى تقييماً ★</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="productsGrid"></div>
+
+    <!-- Interactive Smart Protein Calculator Widget -->
+    <section class="calc-container" id="calculator">
+      <div>
+        <div class="hero-badge">أداة الذكاء الرياضي 2026</div>
+        <h2 style="font-size: 1.7rem; font-weight: 900; margin: 8px 0 10px;">احسب احتياجك اليومي من البروتين والماء</h2>
+        <p style="color: var(--slate-500); font-size: 0.92rem;">أدخل وزنك وهدفك التدريبي لحساب الجرامات بدقة وترشيح المكمل الأنسب لبناء عضلاتك.</p>
+
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label>الوزن الحالي (كجم)</label>
+            <input type="number" id="cWeight" value="75" min="40" max="180" oninput="calculateProtein()">
+          </div>
+          <div class="input-group">
+            <label>الهدف الرياضي</label>
+            <select id="cGoal" onchange="calculateProtein()">
+              <option value="hypertrophy">بناء وتضخيم عضلي صافي</option>
+              <option value="cutting">تنشيف ونحت مع حرق دهون</option>
+              <option value="endurance">لياقة عامة وتحمل</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-result-box">
+        <span style="font-size: 0.88rem; color: var(--slate-500); font-weight: 700;">احتياجك البروتيني اليومي الموصى به</span>
+        <div class="num" id="cResult">165 جم</div>
+        <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 16px;" id="cDesc">يعادل وجبات صحية غنية بالبروتين + سكوب واي أيزوليت بعد التمرين مباشرة</p>
+        <button class="btn-primary" style="width: 100%; justify-content: center; font-size: 0.88rem;" onclick="setCategory('supplements')">
+          تصفح المكملات المناسبة لجرعتك
+        </button>
+      </div>
+    </section>
+
+    <!-- Bundles & Saving Packages -->
+    <div class="section-header" id="bundles">
+      <div>
+        <h2>باقات التوفير الرياضية المتكاملة</h2>
+        <p>احصل على برنامجك ومكملاتك دفعة واحدة ووفر حتى 35% من القيمة الفردية</p>
+      </div>
+    </div>
+
+    <div class="bundles-wrap">
+      <!-- Bundle 1 -->
+      <div class="bundle">
+        <h3 style="font-size: 1.25rem; font-weight: 800;">باقة التنشيف ونحت العضلات</h3>
+        <p style="color: var(--slate-500); font-size: 0.84rem; margin-top: 4px;">التركيبة المثالية لحرق الدهون والمحافظة على النسيج العضلي</p>
+        <ul>
+          <li>✓ واي أيزوليت هيدرو زيرو كارب (2 كجم)</li>
+          <li>✓ حارق دهون ثيرموجينك نانو 2026</li>
+          <li>✓ مكمل L-Carnitine سائل عالي التركيز</li>
+          <li>✓ شيكر ستانلس مقاوم للتسريب هدية</li>
+        </ul>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <b style="font-size: 1.35rem; color: var(--dark);">3,650 ج.م</b>
+            <span style="text-decoration: line-through; color: var(--slate-500); font-size: 0.85rem; margin-right: 4px;">4,800 ج.م</span>
+          </div>
+          <button class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;" onclick="addBundleToCart('باقة التنشيف ونحت العضلات', 3650)">
+            اطلب الباقة
+          </button>
+        </div>
+      </div>
+
+      <!-- Bundle 2 (Featured) -->
+      <div class="bundle featured">
+        <span class="bundle-badge">🔥 الأكثر طلباً من أبطال مصر</span>
+        <h3 style="font-size: 1.25rem; font-weight: 800;">باقة الضخامة والقوة المتفجرة</h3>
+        <p style="color: var(--slate-500); font-size: 0.84rem; margin-top: 4px;">لزيادة الوزن العضلي الصافي ومضاعفة أوزان التمارين</p>
+        <ul>
+          <li>✓ ماس جينر ألترا نيوترشن سعرات نقية</li>
+          <li>✓ كرياتين مونوهايدريت 200 Mesh نقي</li>
+          <li>✓ بري وورك أوت Nitro Pump للطاقة</li>
+          <li>✓ جدول تدريبي وغذائي مجاني لمدة شهر</li>
+        </ul>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <b style="font-size: 1.35rem; color: var(--primary);">3,990 ج.م</b>
+            <span style="text-decoration: line-through; color: var(--slate-500); font-size: 0.85rem; margin-right: 4px;">5,250 ج.م</span>
+          </div>
+          <button class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;" onclick="addBundleToCart('باقة الضخامة والقوة المتفجرة', 3990)">
+            اطلب الباقة الذهبية
+          </button>
+        </div>
+      </div>
+
+      <!-- Bundle 3 -->
+      <div class="bundle">
+        <h3 style="font-size: 1.25rem; font-weight: 800;">باقة تجهيز الهوم جيم الذكي</h3>
+        <p style="color: var(--slate-500); font-size: 0.84rem; margin-top: 4px;">كل ما تحتاجه للتدريب المنزلي الشامل بدون اشتراك جيم</p>
+        <ul>
+          <li>✓ طقم دمبلز ذكي سريع التعديل حتى 32 كجم</li>
+          <li>✓ دكة تمارين فولاذية 7 زوايا متعددة المستويات</li>
+          <li>✓ حبال مقاومة مطاطية عالية التحمل 5 مستويات</li>
+          <li>✓ بساط تمارين عازل للضغط بسمك 12 ملم</li>
+        </ul>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <b style="font-size: 1.35rem; color: var(--dark);">8,450 ج.م</b>
+            <span style="text-decoration: line-through; color: var(--slate-500); font-size: 0.85rem; margin-right: 4px;">11,200 ج.م</span>
+          </div>
+          <button class="btn-primary" style="padding: 8px 18px; font-size: 0.85rem;" onclick="addBundleToCart('باقة تجهيز الهوم جيم الذكي', 8450)">
+            اطلب باقة الجيم
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verified Testimonials -->
+    <section class="reviews-box">
+      <div style="text-align: center; max-width: 500px; margin: 0 auto;">
+        <span style="color: var(--primary); font-weight: 800; font-size: 0.84rem;">تقييمات أبطال الجيم في مصر</span>
+        <h2 style="font-size: 1.7rem; font-weight: 900; margin-top: 4px;">ماذا يقول مدربو ورياضيو الجيم؟</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-item">
+          <div style="color: #f59e0b;">★★★★★</div>
+          <p style="font-size: 0.88rem; color: var(--dark); margin: 8px 0 12px; line-height: 1.6;">
+            "منتجات البروتين والكرياتين أصلية 100% والتوصيل في القاهرة وصلني تاني يوم والدفع كان عن طريق إنستاباي InstaPay في ثواني. متجر محترم جداً."
+          </p>
+          <div style="font-weight: 800; font-size: 0.88rem;">الكابتن أحمد ممدوح</div>
+          <div style="font-size: 0.75rem; color: var(--slate-500);">مدرب كمال أجسام معتمد - المعادي، القاهرة</div>
+        </div>
+
+        <div class="review-item">
+          <div style="color: #f59e0b;">★★★★★</div>
+          <p style="font-size: 0.88rem; color: var(--dark); margin: 8px 0 12px; line-height: 1.6;">
+            "طقم الدمبلز الذكي ودكة التمارين خامتهم فولاذ تقيل وممتازة. وفروا عليا زحمة الجيم في إسكندرية وأسعارهم ممتازة مقارنة بالسوق."
+          </p>
+          <div style="font-weight: 800; font-size: 0.88rem;">المهندس كريم الشناوي</div>
+          <div style="font-size: 0.75rem; color: var(--slate-500);">ممارس كروسفت - سموحة، الإسكندرية</div>
+        </div>
+
+        <div class="review-item">
+          <div style="color: #f59e0b;">★★★★★</div>
+          <p style="font-size: 0.88rem; color: var(--dark); margin: 8px 0 12px; line-height: 1.6;">
+            "حاسبة البروتين في الموقع ممتازة، واستخدمت كود الخصم FIT2026 ووفرت أكتر من 400 جنيه على الطلب والشحن كان مجاني. شكراً ليكم."
+          </p>
+          <div style="font-weight: 800; font-size: 0.88rem;">ميادة إبراهيم</div>
+          <div style="font-size: 0.75rem; color: var(--slate-500);">رياضية ومهتمة بالفتنس - التجمع الخامس</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 12px;">
+            <div class="brand-icon" style="width:34px; height:34px;">⚡</div>
+            <div>AURA <span>FIT 2026</span></div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--slate-500); line-height: 1.7; max-width: 320px;">
+            المنصة المصرية الرائدة لبيع مكملات اللياقة البدنية المستوردة الأصلية ومعدات الجيم، بأحدث تقنيات التجارة الإلكترونية لعام 2026.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>أقسام المتجر</h4>
+          <ul>
+            <li><a href="#store" onclick="setCategory('supplements')">واي بروتين ومكملات استشفاء</a></li>
+            <li><a href="#store" onclick="setCategory('supplements')">طاقة ما قبل التمرين وكرياتين</a></li>
+            <li><a href="#store" onclick="setCategory('equipment')">أطقم دمبلز وبارات أولمبية</a></li>
+            <li><a href="#store" onclick="setCategory('apparel')">ملابس وأزياء أداء رياضية</a></li>
+            <li><a href="#store" onclick="setCategory('snacks')">سناك صحي وبروتين بار</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>خدمة العملاء</h4>
+          <ul>
+            <li><a href="#calculator">حاسبة الاحتياج البروتيني</a></li>
+            <li><a href="#bundles">باقات التوفير والخصومات</a></li>
+            <li><a href="#">الشحن لجميع محافظات مصر</a></li>
+            <li><a href="#">ضمان المنتجات والاسترجاع 14 يوم</a></li>
+            <li><a href="#">تتبع شحنتك المباشر</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>طرق الدفع والتقسيط في مصر</h4>
+          <p style="font-size: 0.82rem; color: var(--slate-500); margin-bottom: 12px;">
+            نوفر طرق دفع سهلة وفورية تناسبك في مصر:
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">إنستاباي InstaPay</span>
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">فودافون كاش</span>
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">ميزة Meeza</span>
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">فيزا / ماستركارد</span>
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">تقسيط فاليو valU</span>
+            <span style="background:var(--slate-100); padding:4px 8px; border-radius:6px; font-size:0.75rem; font-weight:700;">الدفع عند الاستلام</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--slate-100); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.82rem; color:var(--slate-500);">
+        <div>جميع الحقوق محفوظة © 2026 متجر أورا فيت مصر | سجل تجاري وبطاقة ضريبية معتمدة</div>
+        <div style="display:flex; gap:14px;">
+          <a href="#">الشروط والأحكام</a>
+          <a href="#">سياسة الخصوصية</a>
+          <a href="#">الشهادة الضريبية</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div class="cart-backdrop" id="cartOverlay" onclick="if(event.target===this) toggleCart(false)">
+    <div class="drawer">
+      <div class="drawer-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800; display:flex; align-items:center; gap:8px;">
+          <span>سلة المشتريات</span>
+          <span style="font-size:1.1rem;">🛒</span>
+        </h3>
+        <button onclick="toggleCart(false)" style="font-size: 1.25rem;">✕</button>
+      </div>
+
+      <div class="shipping-meter">
+        <div id="shipMeterText">أضف 500 ج.م للحصول على شحن مجاني! 🚚</div>
+        <div class="meter-bar"><div class="meter-fill" id="shipMeterFill"></div></div>
+      </div>
+
+      <div class="drawer-body" id="cartList"></div>
+
+      <div class="drawer-footer">
+        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+          <input type="text" id="cCodeInput" placeholder="كود الخصم (جرب FIT2026)" style="flex:1; padding: 8px 12px; border: 1px solid var(--slate-200); border-radius: 8px; font-size: 0.85rem; outline:none;">
+          <button class="btn-primary" style="padding: 8px 16px; font-size: 0.82rem;" onclick="applyDiscount()">تطبيق</button>
+        </div>
+
+        <div class="calc-row"><span>المجموع الفرعي:</span><b id="subtotalVal">0 ج.م</b></div>
+        <div class="calc-row" id="discRow" style="display:none; color:#dc2626;"><span>خصم الكود (15%):</span><b id="discAmt">-0 ج.م</b></div>
+        <div class="calc-row"><span>مصاريف الشحن:</span><b id="shipVal">مجاني</b></div>
+        <div class="calc-row final"><span>الإجمالي النهائي:</span><b id="grandVal" style="color:var(--primary);">0 ج.م</b></div>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px; font-size: 0.95rem;" onclick="openCheckout()">
+          متابعة الدفع السريع ⚡
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickModal" onclick="if(event.target===this) closeQuick()">
+    <div class="modal-window">
+      <button class="close-modal" onclick="closeQuick()">✕</button>
+      <div id="quickBody"></div>
+    </div>
+  </div>
+
+  <!-- Fast Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal" onclick="if(event.target===this) closeCheckout()">
+    <div class="modal-window">
+      <button class="close-modal" onclick="closeCheckout()">✕</button>
+      <h3 style="font-size: 1.35rem; font-weight: 900; margin-bottom: 6px;">إتمام الطلب السريع ⚡</h3>
+      <p style="font-size: 0.84rem; color: var(--slate-500); margin-bottom: 20px;">أدخل عنوانك في مصر لتأكيد وشحن طلبك فوراً</p>
+
+      <form onsubmit="placeOrder(event)" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="input-group">
+          <label>الاسم بالكامل</label>
+          <input type="text" required placeholder="مثال: محمد أحمد علي">
+        </div>
+        <div class="input-group">
+          <label>رقم الموبايل (واتساب للمتابعة والشحن)</label>
+          <input type="tel" required placeholder="01XXXXXXXXX">
+        </div>
+        <div class="input-group">
+          <label>المحافظة والعنوان بالتفصيل</label>
+          <input type="text" required placeholder="القاهرة - مدينة نصر - شارع عباس العقاد">
+        </div>
+        <div class="input-group">
+          <label>طريقة الدفع المفضلة</label>
+          <select>
+            <option>الدفع عند الاستلام (COD)</option>
+            <option>تحويل إنستاباي InstaPay (فوري)</option>
+            <option>محافظ إلكترونية (فودافون كاش / أورانج / اتصالات)</option>
+            <option>بطاقة بنكية (فيزا / ماستركارد / ميزة)</option>
+            <option>تقسيط فاليو valU</option>
+          </select>
+        </div>
+
+        <div style="background:var(--slate-50); padding:12px; border-radius:10px; border:1px solid var(--slate-200); display:flex; justify-content:space-between; font-weight:800;">
+          <span>المبلغ المطلوب سداده:</span>
+          <span id="checkoutDue" style="color:var(--primary);">0 ج.م</span>
+        </div>
+
+        <button type="submit" class="btn-primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 6px;">
+          تأكيد الطلب وشحن المنتجات 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-tray" id="toastTray"></div>
+
+  <!-- Mobile Bottom Bar -->
+  <div class="mobile-bar">
+    <a href="#" class="mobile-tab active">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+      <span>الرئيسية</span>
+    </a>
+    <a href="#store" class="mobile-tab" onclick="setCategory('all')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>الأقسام</span>
+    </a>
+    <a href="#calculator" class="mobile-tab">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+      <span>الحاسبة</span>
+    </a>
+    <a href="javascript:void(0)" class="mobile-tab" onclick="toggleCart(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <span>السلة (<b id="mCartCount">0</b>)</span>
+    </a>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Product Database in Egyptian Pounds (ج.م)
+    const PRODUCTS = [
+      {
+        id: 1,
+        title: "واي بروتين بلاتينيوم هايدرو أيزوليت 2026",
+        cat: "supplements",
+        catLabel: "مكملات وبروتين",
+        price: 2450,
+        oldPrice: 2950,
+        badge: "الأكثر مبيعاً",
+        badgeType: "badge-amber",
+        rate: 4.95,
+        reviews: 420,
+        chips: ["28g بروتين نقي", "صفر دهون وسكر", "فانيليا فرنسية"],
+        desc: "أنقى وأسرع أشكال البروتين امتصاصاً، معزز بإنزيمات هضم لمنع أي انتفاخ وضمان تغذية عضلية فورية بعد التمرين.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="25" y="20" width="50" height="65" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="2.5"/><rect x="33" y="10" width="34" height="12" rx="3" fill="#0f172a"/><path d="M35 50h30" stroke="#059669" stroke-width="3"/><circle cx="50" cy="38" r="4" fill="#10b981"/><text x="50" y="68" font-size="6" font-weight="900" text-anchor="middle" fill="#0f172a">HYDRO PURE</text></svg>`
+      },
+      {
+        id: 2,
+        title: "بري وورك أوت نيترو بامب (طاقة وتركيز خارق)",
+        cat: "supplements",
+        catLabel: "طاقة وباور",
+        price: 1450,
+        oldPrice: 1750,
+        badge: "حصري 2026",
+        badgeType: "badge-green",
+        rate: 4.88,
+        reviews: 310,
+        chips: ["350mg كافيين", "6g سيترولين", "ضخ دم هائل"],
+        desc: "تركيبة حصرية تمنحك تركيزاً ذهنياً فائقاً وضخاً دموياً قوياً في الألياف العضلية بدون أي خفقان أو هبوط مفاجئ في الطاقة.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="28" y="22" width="44" height="60" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/><rect x="34" y="12" width="32" height="10" rx="3" fill="#1e1b4b"/><polygon points="52 35 44 50 49 50 46 65 57 48 51 48 55 35" fill="#ef4444"/><text x="50" y="74" font-size="6" font-weight="900" text-anchor="middle" fill="#1e1b4b">NITRO PUMP</text></svg>`
+      },
+      {
+        id: 3,
+        title: "كرياتين مونوهايدريت مايكرونايزد 200 Mesh",
+        cat: "supplements",
+        catLabel: "مكملات وضخامة",
+        price: 950,
+        oldPrice: 1200,
+        badge: "خصم 20%",
+        badgeType: "badge-red",
+        rate: 4.96,
+        reviews: 580,
+        chips: ["5g نقاء مطلق", "بدون نكهة", "ذوبان فوري"],
+        desc: "أنعم كرياتين مذاب مجهرياً، يمتزج فوراً بالماء أو العصير لرفع مخازن الطاقة العضلية وزيادة أوزان التمارين بأمان.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/><rect x="35" y="15" width="30" height="12" rx="4" fill="#0f172a"/><circle cx="50" cy="48" r="12" fill="#dbeafe"/><text x="50" y="52" font-size="7" font-weight="900" text-anchor="middle" fill="#1d4ed8">CREA</text></svg>`
+      },
+      {
+        id: 4,
+        title: "طقم دمبلز ذكي سريع التعديل (5 إلى 32 كجم)",
+        cat: "equipment",
+        catLabel: "أجهزة وأوزان الجيم",
+        price: 5800,
+        oldPrice: 7200,
+        badge: "الأكثر طلباً",
+        badgeType: "badge-amber",
+        rate: 4.92,
+        reviews: 145,
+        chips: ["فولاذ كروم صلب", "16 وزن بضغطة زر", "قاعدة تثبيت"],
+        desc: "استبدل 16 زوج دمبل تقليدي بزوج واحد ذكي وأنيق. يغير الوزن تلقائياً بمجرد لف المقبض بسلاسة وأمان تام.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="15" y="38" width="10" height="24" rx="2" fill="#0f172a"/><rect x="27" y="32" width="10" height="36" rx="2" fill="#334155"/><rect x="37" y="46" width="26" height="8" rx="2" fill="#94a3b8"/><rect x="63" y="32" width="10" height="36" rx="2" fill="#334155"/><rect x="75" y="38" width="10" height="24" rx="2" fill="#0f172a"/></svg>`
+      },
+      {
+        id: 5,
+        title: "دكة تدريب احترافية متعددة الزوايا 7 درجات",
+        cat: "equipment",
+        catLabel: "أجهزة وأوزان الجيم",
+        price: 2600,
+        oldPrice: 3200,
+        badge: "تحمل 400 كجم",
+        badgeType: "badge-green",
+        rate: 4.89,
+        reviews: 98,
+        chips: ["جلد مضاد للتعرق", "7 زوايا تدريب", "عجلات نقل"],
+        desc: "مقعد تدريب صلب يتحمل الأوزان الثقيلة، مبطن بطبقات إسفنجية عالية الكثافة لدعم أسفل الظهر وثبات استثنائي أثناء التمرين.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><path d="M15 70h70M25 70l15-35 30 5M40 35l15 35" stroke="#0f172a" stroke-width="4" stroke-linecap="round"/><rect x="35" y="24" width="35" height="10" rx="3" fill="#059669" transform="rotate(-15 35 24)"/></svg>`
+      },
+      {
+        id: 6,
+        title: "مشاية كهربائية ذكية كولكشن 2026 هادئة وقابلة للطي",
+        cat: "equipment",
+        catLabel: "كارديو وجيم",
+        price: 14800,
+        oldPrice: 18500,
+        badge: "موتور 3.5 حصان",
+        badgeType: "badge-green",
+        rate: 4.9,
+        reviews: 64,
+        chips: ["شاشة لمس LED", "هيدروليك للطي", "ممتص صدمات للركب"],
+        desc: "مشاية رياضية متطورة لعام 2026، قابلة للطي لتوفير المساحة ومزودة بنظام امتصاص صدمات هيدروليكي لحماية المفاصل.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><path d="M15 75 L75 75 L85 45 L70 45" stroke="#0f172a" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="25" cy="75" r="5" fill="#059669"/><circle cx="70" cy="75" r="5" fill="#059669"/><line x1="75" y1="75" x2="80" y2="45" stroke="#0284c7" stroke-width="3"/></svg>`
+      },
+      {
+        id: 7,
+        title: "طقم ملابس تدريب Pro-Fit دراي فيت تهوية هوائية",
+        cat: "apparel",
+        catLabel: "ملابس رياضية",
+        price: 850,
+        oldPrice: 1100,
+        badge: "كولكشن 2026",
+        badgeType: "badge-green",
+        rate: 4.76,
+        reviews: 180,
+        chips: ["قماش مضاد للبكتيريا", "مرونة في 4 اتجاهات", "لون رصاصي"],
+        desc: "تيشيرت وبنطال تدريب مريحين للغاية، يمتصان العرق بسرعة فائقة مع توفير تهوية كاملة أثناء التمارين الشاقة.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><path d="M30 25 L45 22 Q50 30 55 22 L70 25 L65 42 L58 38 L58 80 L42 80 L42 38 L35 42 Z" fill="#f1f5f9" stroke="#0f172a" stroke-width="2.5"/><path d="M45 45 L55 45" stroke="#059669" stroke-width="2"/></svg>`
+      },
+      {
+        id: 8,
+        title: "حذاء رفع أثقال وتدريب متعدد Stability 2026",
+        cat: "apparel",
+        catLabel: "ملابس وأحذية",
+        price: 1950,
+        oldPrice: 2400,
+        badge: "ثبات هائل بالسكوات",
+        badgeType: "badge-red",
+        rate: 4.88,
+        reviews: 95,
+        chips: ["قاعدة عريضة مانعة للانزلاق", "كعب مرفوع 20 ملم", "قفل مزدوج"],
+        desc: "حذاء هندسي مصمم لتثبيت القدم بالكامل على الأرض ونقل القوة العضلية بنسبة 100% دون أي اهتزاز أثناء السكوات.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><path d="M20 65 L28 45 L50 48 L75 60 L80 70 L20 70 Z" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/><rect x="20" y="68" width="60" height="6" rx="2" fill="#059669"/></svg>`
+      },
+      {
+        id: 9,
+        title: "علبة بروتين بار مقرمش (12 قطعة شوكولاتة كراميل)",
+        cat: "snacks",
+        catLabel: "سناكس صحية",
+        price: 750,
+        oldPrice: 950,
+        badge: "زيرو سكر",
+        badgeType: "badge-amber",
+        rate: 4.85,
+        reviews: 340,
+        chips: ["20g بروتين للقطعة", "ألياف عالية", "طعم خرافي"],
+        desc: "سناك بروتيني لذيذ ومقرمش يمنحك 20 جرام بروتين صافي بدون أي سكر مضاف، مناسب كوجبة خفيفة بالشغل أو قبل التمرين.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="20" y="35" width="60" height="30" rx="5" fill="#fef3c7" stroke="#b45309" stroke-width="2.5"/><line x1="28" y1="42" x2="36" y2="58" stroke="#78350f" stroke-width="3" stroke-linecap="round"/><line x1="44" y1="42" x2="52" y2="58" stroke="#78350f" stroke-width="3" stroke-linecap="round"/><line x1="60" y1="42" x2="68" y2="58" stroke="#78350f" stroke-width="3" stroke-linecap="round"/></svg>`
+      },
+      {
+        id: 10,
+        title: "زبدة فول سوداني نقية 100% بدون إضافات (1 كجم)",
+        cat: "snacks",
+        catLabel: "أغذية صحية",
+        price: 240,
+        oldPrice: 310,
+        badge: "طبيعي 100%",
+        badgeType: "badge-red",
+        rate: 4.8,
+        reviews: 420,
+        chips: ["بدون زيوت مهدرجة", "صفر سكر مضاف", "دهون صحية ممتازة"],
+        desc: "فول سوداني محمص مطحون بعناية فائقة بدون إضافة أي قطرة زيت أو ملح أو سكر، مثالية مع الشوفان والسموذي الرياضي.",
+        svg: `<svg width="90" height="90" viewBox="0 0 100 100"><rect x="30" y="28" width="40" height="52" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/><ellipse cx="50" cy="52" rx="14" ry="10" fill="#fde68a"/><text x="50" y="55" font-size="6" font-weight="900" fill="#92400e" text-anchor="middle">PEANUT</text></svg>`
+      }
+    ];
+
+    let cart = [];
+    let activeCategory = 'all';
+    let activeSort = 'featured';
+    let discountPercent = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      updateCartDisplay();
+      calculateProtein();
+      initCountdown();
+    });
+
+    // Countdown Timer
+    function initCountdown() {
+      let seconds = 14 * 3600 + 32 * 60 + 48;
+      setInterval(() => {
+        if (seconds > 0) {
+          seconds--;
+          document.getElementById('cdHrs').innerText = String(Math.floor(seconds / 3600)).padStart(2, '0');
+          document.getElementById('cdMins').innerText = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+          document.getElementById('cdSecs').innerText = String(seconds % 60).padStart(2, '0');
+        }
+      }, 1000);
+    }
+
+    // Render Products
+    function renderProducts(list = null) {
+      const container = document.getElementById("productsGrid");
+      let items = list || PRODUCTS.slice();
+
+      if (!list && activeCategory !== 'all') {
+        items = items.filter(p => p.cat === activeCategory);
+      }
+
+      if (activeSort === 'price-low') items.sort((a,b) => a.price - b.price);
+      else if (activeSort === 'price-high') items.sort((a,b) => b.price - a.price);
+      else if (activeSort === 'rating') items.sort((a,b) => b.rate - a.rate);
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; color: var(--slate-500);">
+            <h3>لم نجد منتجات مطابقة للبحث</h3>
+            <p style="font-size:0.88rem;">جرب كتابة كلمات أخرى مثل "واي"، "دمبلز"، أو تصفح كل الأقسام.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = items.map(p => `
+        <div class="prod-card">
+          <div class="prod-top">
+            <span class="prod-badge ${p.badgeType}">${p.badge}</span>
+            <button class="wish-btn" onclick="toggleWish(this)" title="أضف للمفضلة">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+          </div>
+
+          <div class="prod-thumb" onclick="openQuickView(${p.id})">
+            ${p.svg}
+            <span class="quick-hover">معاينة سريعة 🔍</span>
+          </div>
+
+          <span class="prod-cat-label">${p.catLabel}</span>
+          <h4 class="prod-title" onclick="openQuickView(${p.id})">${p.title}</h4>
+
+          <div class="prod-stars">
+            <span>★★★★★</span>
+            <b style="color:var(--dark); margin-right:4px;">${p.rate}</b>
+            <span style="color:var(--slate-500); font-size:0.75rem;">(${p.reviews})</span>
+          </div>
+
+          <div class="prod-chips">
+            ${p.chips.map(c => `<span class="chip">${c}</span>`).join('')}
+          </div>
+
+          <div class="prod-bottom">
+            <div>
+              <div class="prod-price">${p.price.toLocaleString()} <small>ج.م</small></div>
+              ${p.oldPrice ? `<span class="prod-old-price">${p.oldPrice.toLocaleString()} ج.م</span>` : ''}
+            </div>
+            <button class="add-cart-btn" onclick="addToCart(${p.id})" title="أضف للسلة">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Category Filter
+    function setCategory(cat, boxEl = null, pillEl = null) {
+      activeCategory = cat;
+      if (boxEl) {
+        document.querySelectorAll('.cat-card').forEach(e => e.classList.remove('active'));
+        boxEl.classList.add('active');
+      }
+      if (pillEl) {
+        document.querySelectorAll('.filter-pill').forEach(e => e.classList.remove('active'));
+        pillEl.classList.add('active');
+      }
+      renderProducts();
+    }
+
+    function sortItems(sortVal) {
+      activeSort = sortVal;
+      renderProducts();
+    }
+
+    function filterDiscounted() {
+      const discounted = PRODUCTS.filter(p => p.oldPrice > p.price);
+      renderProducts(discounted);
+      toast("تم عرض منتجات عروض الفلاش سيل 🔥");
+    }
+
+    function handleSearch(val) {
+      const q = val.trim().toLowerCase();
+      if (!q) { renderProducts(); return; }
+      const matched = PRODUCTS.filter(p => 
+        p.title.toLowerCase().includes(q) || 
+        p.desc.toLowerCase().includes(q) ||
+        p.catLabel.toLowerCase().includes(q)
+      );
+      renderProducts(matched);
+    }
+
+    // Wishlist Toggle
+    function toggleWish(btn) {
+      btn.classList.toggle('active');
+      let count = parseInt(document.getElementById('wishCount').innerText) || 0;
+      count = btn.classList.contains('active') ? count + 1 : Math.max(0, count - 1);
+      document.getElementById('wishCount').innerText = count;
+      toast(btn.classList.contains('active') ? "تمت الإضافة إلى المفضلة ❤️" : "تم الحذف من المفضلة");
+    }
+
+    // Cart System
+    function addToCart(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      if (!product) return;
+      const exist = cart.find(item => item.id === id);
+      if (exist) {
+        exist.qty++;
+      } else {
+        cart.push({ id: product.id, title: product.title, price: product.price, svg: product.svg, qty: 1 });
+      }
+      updateCartDisplay();
+      toast(`تمت إضافة "${product.title}" إلى السلة 🛒`);
+      toggleCart(true);
+    }
+
+    function addBundleToCart(name, price) {
+      cart.push({
+        id: Date.now(),
+        title: name,
+        price: price,
+        qty: 1,
+        svg: `<svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>`
+      });
+      updateCartDisplay();
+      toast(`تمت إضافة ${name} للسلة 🎁`);
+      toggleCart(true);
+    }
+
+    function changeCartQty(idx, delta) {
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      updateCartDisplay();
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      updateCartDisplay();
+      toast("تم حذف المنتج من السلة");
+    }
+
+    function updateCartDisplay() {
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cartBadge').innerText = totalCount;
+      document.getElementById('mCartCount').innerText = totalCount;
+
+      const list = document.getElementById('cartList');
+      if (cart.length === 0) {
+        list.innerHTML = `<div style="text-align:center; padding: 40px 10px; color: var(--slate-500);">سلة المشتريات فارغة حالياً</div>`;
+      } else {
+        list.innerHTML = cart.map((item, idx) => `
+          <div class="cart-card">
+            <div class="cart-thumb">${item.svg}</div>
+            <div style="flex:1;">
+              <h5 style="font-size:0.86rem; font-weight:800; color:var(--dark);">${item.title}</h5>
+              <div style="color:var(--primary); font-weight:800; font-size:0.86rem;">${item.price.toLocaleString()} ج.م</div>
+              <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                <button onclick="changeCartQty(${idx}, -1)" style="padding:2px 8px; background:var(--slate-100); border-radius:4px; font-weight:700;">-</button>
+                <span style="font-weight:700; font-size:0.85rem;">${item.qty}</span>
+                <button onclick="changeCartQty(${idx}, 1)" style="padding:2px 8px; background:var(--slate-100); border-radius:4px; font-weight:700;">+</button>
+                <button onclick="removeCartItem(${idx})" style="color:#ef4444; font-size:0.75rem; margin-right:auto; text-decoration:underline;">حذف</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Calculations in EGP (Free shipping threshold: 1,500 EGP, Shipping fee: 65 EGP)
+      const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      let discAmount = 0;
+      if (discountPercent > 0) {
+        discAmount = (subtotal * discountPercent) / 100;
+        document.getElementById('discRow').style.display = 'flex';
+        document.getElementById('discAmt').innerText = `-${Math.round(discAmount).toLocaleString()} ج.م`;
+      } else {
+        document.getElementById('discRow').style.display = 'none';
+      }
+
+      const shipping = subtotal >= 1500 || subtotal === 0 ? 0 : 65;
+      const grand = Math.max(0, subtotal - discAmount + shipping);
+
+      document.getElementById('subtotalVal').innerText = `${subtotal.toLocaleString()} ج.م`;
+      document.getElementById('shipVal').innerText = shipping === 0 ? "مجاني" : `${shipping} ج.م`;
+      document.getElementById('grandVal').innerText = `${Math.round(grand).toLocaleString()} ج.م`;
+      document.getElementById('checkoutDue').innerText = `${Math.round(grand).toLocaleString()} ج.م`;
+
+      // Free shipping progress bar
+      const fill = Math.min(100, Math.floor((subtotal / 1500) * 100));
+      document.getElementById('shipMeterFill').style.width = `${fill}%`;
+      document.getElementById('shipMeterText').innerText = subtotal >= 1500 ? "🎉 مبروك! حصلت على شحن سريع مجاني لكافة المحافظات!" : `أضف ${(1500 - subtotal).toLocaleString()} ج.م لتحصل على شحن مجاني! 🚚`;
+    }
+
+    function toggleCart(open) {
+      document.getElementById('cartOverlay').classList.toggle('active', open);
+    }
+
+    function applyDiscount() {
+      const code = document.getElementById('cCodeInput').value.trim().toUpperCase();
+      if (code === 'FIT2026') {
+        discountPercent = 15;
+        updateCartDisplay();
+        toast("✨ تم تطبيق كود FIT2026 وخصم 15% بنجاح!");
+      } else {
+        toast("كود الخصم غير صحيح أو منتهي الصلاحية");
+      }
+    }
+
+    // Quick View Modal
+    function openQuickView(id) {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('quickBody').innerHTML = `
+        <div style="text-align:center; margin-bottom:12px;">${p.svg}</div>
+        <span class="prod-cat-label">${p.catLabel}</span>
+        <h3 style="font-size:1.35rem; font-weight:900; margin:6px 0;">${p.title}</h3>
+        <div class="prod-stars" style="margin-bottom:12px;">
+          <span>★★★★★</span> <b>${p.rate}</b> <span>(${p.reviews} تقييم من كباتن الجيم)</span>
+        </div>
+        <p style="color:var(--slate-500); font-size:0.92rem; line-height:1.6; margin-bottom:16px;">${p.desc}</p>
+        <div class="prod-chips" style="margin-bottom:20px;">
+          ${p.chips.map(c => `<span class="chip" style="padding:5px 12px; font-size:0.8rem;">${c}</span>`).join('')}
+        </div>
+        <div style="font-size:1.6rem; font-weight:900; margin-bottom:20px;">
+          ${p.price.toLocaleString()} <small style="font-size:0.9rem; color:var(--slate-500);">ج.م</small>
+        </div>
+        <button class="btn-primary" style="width:100%; justify-content:center; padding:12px;" onclick="addToCart(${p.id}); closeQuick();">
+          أضف إلى السلة الآن
+        </button>
+      `;
+      document.getElementById('quickModal').classList.add('active');
+    }
+
+    function closeQuick() {
+      document.getElementById('quickModal').classList.remove('active');
+    }
+
+    // Checkout Handling
+    function openCheckout() {
+      if (cart.length === 0) return toast("سلة المشتريات فارغة!");
+      toggleCart(false);
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function placeOrder(e) {
+      e.preventDefault();
+      closeCheckout();
+      const amount = document.getElementById('checkoutDue').innerText;
+      cart = [];
+      updateCartDisplay();
+      alert(`🎉 تم استلام طلبك بنجاح بمبلغ ${amount}!\nرقم الطلب: #EG-${Math.floor(100000 + Math.random()*900000)}\nسيتم التواصل معك هاتفياً أو عبر الواتساب لتأكيد الشحن فوراً.`);
+      toast("تم تأكيد طلبك وشحنه بنجاح 🚀");
+    }
+
+    // Smart Protein Calculator
+    function calculateProtein() {
+      const w = parseFloat(document.getElementById('cWeight').value) || 75;
+      const g = document.getElementById('cGoal').value;
+      let multiplier = 2.0;
+      if (g === 'hypertrophy') multiplier = 2.2;
+      else if (g === 'cutting') multiplier = 2.4;
+      else multiplier = 1.6;
+
+      const grams = Math.round(w * multiplier);
+      document.getElementById('cResult').innerText = `${grams} جم`;
+
+      let note = "";
+      if (g === 'hypertrophy') note = "لبناء ضخامة عضلية صافية بدون دهون، نوصي بتناول سكوبين واي أيزوليت مع وجباتك اليومية.";
+      else if (g === 'cutting') note = "للحفاظ على العضلات وحرق الدهون العنيدة، احتفظ بنسبة بروتين عالية لتقليل الهدم العضلي أثناء الدايت.";
+      else note = "احتياج مثالي للحفاظ على النشاط البدني والاستشفاء السريع بعد الكارديو واللياقة.";
+      document.getElementById('cDesc').innerText = note;
+    }
+
+    // Toast
+    function toast(msg) {
+      const tray = document.getElementById('toastTray');
+      const pill = document.createElement('div');
+      pill.className = 'toast-pill';
+      pill.innerText = msg;
+      tray.appendChild(pill);
+      setTimeout(() => {
+        pill.style.opacity = '0';
+        pill.style.transition = '0.3s';
+        setTimeout(() => pill.remove(), 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
